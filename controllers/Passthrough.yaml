@@ -1,0 +1,44 @@
+ObserverPipelines:
+  name: MainObserverPipeline
+  gui: true
+  observers:
+    - type: Encoder
+    
+    - type: BodySensor
+      update: true
+      config:
+        bodySensor: FloatingBase
+        
+    - type: Attitude
+      update: false
+    - type: KinematicInertial
+      update: false
+      config:
+        anchorFrame:
+          maxAnchorFrameDiscontinuity: 0.05 # [m]
+    - type: Tilt
+      update: false
+      config:
+        bodySensor: FloatingBase
+        odometryType: Flat 
+        finalAlpha: 0.0 # 5 # 0.0
+        finalBeta: 0.0 # 1 # 0.0 # 0.00001
+        finalGamma: 0.0 # 2 # 0.0
+        contactsDetection: Surfaces
+        surfacesForContactDetection: [RightFootCenter, LeftFootCenter] # [LeftHandForceSensor]
+        
+    - type: MCKineticsObserver
+      update: false
+      config:
+        backupInterval: 1
+        odometryType: None  # None # Odometry6d # flatOdometry
+        #surfacesOfContactsAsInput: [RightHandSupportPlate, LeftHandSupportPlate] # [LeftHandForceSensor]
+        contactsDetection: Surfaces
+        surfacesForContactDetection: [RightFootCenter, LeftFootCenter] # [LeftHandForceSensor]  # Not needed for HRP5P
+        #contactSensorsDisabledInit: # [RightFootForceSensor, LeftFootForceSensor]
+    #- type: NaiveOdometry
+    #  update: false
+    #  config:
+    #    odometryType: Flat
+    #    contactsDetection: Sensors
+    #    #surfacesForContactDetection: [RightFootCenter, LeftFootCenter] # [LeftHandForceSensor]

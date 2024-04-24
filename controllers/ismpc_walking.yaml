@@ -1,0 +1,76 @@
+ObserverPipelines:
+  name: MainObserverPipeline
+  gui: true
+  observers:
+    - type: Encoder
+    
+    - type: BodySensor
+      update: true
+      config:
+        bodySensor: FloatingBase
+        
+    - type: Tilt
+      update: false
+      config:
+        odometryType: Flat 
+        finalAlpha: 5 # 5 # 0.0
+        finalBeta: 1 # 1 # 0.0 # 0.00001
+        finalGamma: 2 # 2 # 0.0
+        contactsDetection: Surfaces
+        #contactDetectionPropThreshold: 0.6
+        #anchorFrameFunction: dejhifurh
+        surfacesForContactDetection: [RightFootCenter, LeftFootCenter] # [LeftHandForceSensor]
+        
+    # - type: TiltVisual
+    #   update: false
+    #   config:
+    #     odometryType: Flat 
+    #     finalAlpha: 5 # 5 # 0.0
+    #     finalBeta: 1 # 1 # 0.0 # 0.00001
+    #     finalGamma: 2 # 2 # 0.0
+    #     rho1: 100
+    #     rho2: 0
+    #     mu: 5
+    #     contactsDetection: Surfaces
+    #     #contactDetectionPropThreshold: 0.6
+    #     #anchorFrameFunction: dejhifurh
+    #     surfacesForContactDetection: [RightFootCenter, LeftFootCenter] # [LeftHandForceSensor]
+
+    - type: MCVanytEstimator
+      update: false
+      config:
+        odometryType: Flat 
+        tau: 0.15915 # 0.15915 # 0.15915 # 3.18 # 0.15915
+        finalAlpha: 5 # 5 # 0.0
+        finalBeta: 1 # 1 # 0.0 # 0.00001
+        rho1: 2
+        contactsDetection: Surfaces
+        #contactDetectionPropThreshold: 0.6
+        #anchorFrameFunction: dejhifurh
+        surfacesForContactDetection: [RightFootCenter, LeftFootCenter] # [LeftHandForceSensor]
+
+    - type: Attitude
+      update: true
+      
+    - type: KinematicInertial
+      update: true
+      config:
+        anchorFrame:
+          maxAnchorFrameDiscontinuity: 0.05 # [m]
+
+    - type: MCKineticsObserver
+      update: false
+      config:
+        backupInterval: 1
+        odometryType: Flat  # None # Odometry6d # flatOdometry
+        #surfacesOfContactsAsInput: [RightHandSupportPlate, LeftHandSupportPlate] # [LeftHandForceSensor]
+        contactsDetection: Surfaces
+        surfacesForContactDetection: [RightFootCenter, LeftFootCenter] # [LeftHandForceSensor]  # Not needed for HRP5P
+        #contactSensorsDisabledInit: # [RightFootForceSensor, LeftFootForceSensor]
+        
+    #- type: NaiveOdometry
+    #  update: false
+    #  config:
+    #    odometryType: Flat
+    #    contactsDetection: Sensors
+    #    #surfacesForContactDetection: [RightFootCenter, LeftFootCenter] # [LeftHandForceSensor]

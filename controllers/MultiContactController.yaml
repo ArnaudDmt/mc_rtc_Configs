@@ -1,0 +1,259 @@
+# cnoid_env/project/HRP5P/CnoidEnv_TableWithTiltBlocks.cnoid
+
+ObserverPipelines:
+  name: MainObserverPipeline
+  gui: true
+  observers:
+    - type: Encoder
+    
+    - type: BodySensor
+      update: true
+      config:
+        bodySensor: FloatingBase
+        
+    - type: Tilt
+      update: false
+      config:
+        odometryType: 6D 
+        finalAlpha: 5 # 5 # 0.0
+        finalBeta: 1 # 1 # 0.0 # 0.00001
+        finalGamma: 2 # 2 # 0.0
+        contactsDetection: Surfaces
+        #contactDetectionPropThreshold: 0.6
+        #anchorFrameFunction: dejhifurh
+        surfacesForContactDetection: [RightFootCenter, LeftFootCenter, LeftHandCloseContact, RightHandCloseContact] # [LeftHandForceSensor]
+        
+    # - type: TiltVisual
+    #   update: false
+    #   config:
+    #     odometryType: Flat 
+    #     finalAlpha: 5 # 5 # 0.0
+    #     finalBeta: 1 # 1 # 0.0 # 0.00001
+    #     finalGamma: 2 # 2 # 0.0
+    #     rho1: 100
+    #     rho2: 0
+    #     mu: 5
+    #     contactsDetection: Surfaces
+    #     #contactDetectionPropThreshold: 0.6
+    #     #anchorFrameFunction: dejhifurh
+    #     surfacesForContactDetection: [RightFootCenter, LeftFootCenter] # [LeftHandForceSensor]
+
+
+        
+    - type: MCVanytEstimator
+      update: false
+      config:
+        odometryType: 6D 
+        tau: 0.15915 # 0.15915 # 0.15915 # 3.18 # 0.15915
+        finalAlpha: 5 # 5 # 0.0
+        finalBeta: 1 # 1 # 0.0 # 0.00001
+        rho1: 2
+        contactsDetection: Surfaces
+        #contactDetectionPropThreshold: 0.6
+        #anchorFrameFunction: dejhifurh
+        surfacesForContactDetection: [RightFootCenter, LeftFootCenter, LeftHandCloseContact, RightHandCloseContact] # [LeftHandForceSensor]
+
+    - type: Attitude
+      update: true
+      
+    - type: KinematicInertial
+      update: true
+      config:
+        anchorFrame:
+          maxAnchorFrameDiscontinuity: 0.05 # [m]
+
+    - type: MCKineticsObserver
+      update: false
+      config:
+        updateExtWrench: true
+        backupInterval: 1
+        odometryType: 6D  # None # Odometry6d # flatOdometry
+        #surfacesOfContactsAsInput: [RightHandSupportPlate, LeftHandSupportPlate] # [LeftHandForceSensor]
+        contactsDetection: Surfaces
+        surfacesForContactDetection: [RightFootCenter, LeftFootCenter, LeftHandCloseContact, RightHandCloseContact] # [LeftHandForceSensor]  # Not needed for HRP5P
+        #contactSensorsDisabledInit: # [RightFootForceSensor, LeftFootForceSensor]
+        
+    #- type: NaiveOdometry
+    #  update: false
+    #  config:
+    #    odometryType: Flat
+    #    contactsDetection: Sensors
+    #    #surfacesForContactDetection: [RightFootCenter, LeftFootCenter] # [LeftHandForceSensor]
+
+
+transitions:
+  - [MCC::Initial_, OK, MCC::ConfigMotion_, Auto]
+
+states:
+  MCC::Initial_:
+    base: MCC::Initial
+    configs:
+      gripperCommands:
+        - name: l_gripper
+          opening: 0.0
+        - name: r_gripper
+          opening: 0.0
+
+  MCC::ConfigMotion_:
+    base: MCC::ConfigMotion
+    configs:
+      baseTime: Relative
+      stepCommandList:
+        - limb: LeftHand
+          type: Add
+          startTime: 2.0
+          endTime: 4.0
+          pose:
+            translation: [0.15, 0.65, 0.72]
+            rotation: [0.0, 0.0, 0.0]
+          constraint:
+            type: Surface
+            fricCoeff: 0.3
+          swingConfig:
+            approachDurationRatio: 0.4
+            approachOffset: [0.0, 0.0, 0.15]
+        - limb: LeftFoot
+          type: Add
+          startTime: 7.0
+          endTime: 9.0
+          pose:
+            translation: [0.286, 0.15, 0.0]
+            rotation: [0.0, 0.0, 0.0]
+          constraint:
+            type: Surface
+            fricCoeff: 0.4
+        - limb: RightFoot
+          type: Add
+          startTime: 11.0
+          endTime: 13.0
+          pose:
+            translation: [0.536, -0.1, 0.135]
+            rotation: [-0.3217505543966422, 0.0, 0.0]
+          constraint:
+            type: Surface
+            fricCoeff: 0.4
+          swingConfig:
+            withdrawOffset: [0.0, 0.0, 0.05]
+            approachOffset: [0.0, 0.0, 0.03]
+            swingOffset: [-0.05, 0.0, 0.10]
+        - limb: LeftHand
+          type: Add
+          startTime: 11.0
+          endTime: 13.0
+          pose:
+            translation: [0.80, 0.80, 0.805]
+            rotation: [0.22923193327699534, 0.0, 0.0]
+          constraint:
+            type: Surface
+            fricCoeff: 0.3
+        - limb: LeftFoot
+          type: Add
+          startTime: 15.0
+          endTime: 17.0
+          pose:
+            translation: [0.786, 0.15, 0.0]
+            rotation: [0.0, 0.0, 0.0]
+          constraint:
+            type: Surface
+            fricCoeff: 0.4
+        - limb: RightFoot
+          type: Add
+          startTime: 19.0
+          endTime: 21.0
+          pose:
+            translation: [1.036, -0.1, 0.0]
+            rotation: [0.0, 0.0, 0.0]
+          constraint:
+            type: Surface
+            fricCoeff: 0.4
+          swingConfig:
+            withdrawOffset: [0.0, 0.0, 0.03]
+            approachOffset: [0.0, 0.0, 0.05]
+            swingOffset: [0.05, 0.0, 0.10]
+        - limb: LeftHand
+          type: Add
+          startTime: 19.0
+          endTime: 21.0
+          pose:
+            translation: [1.15, 0.65, 0.72]
+            rotation: [0.0, 0.0, 0.0]
+          constraint:
+            type: Surface
+            fricCoeff: 0.3
+        - limb: LeftFoot
+          type: Add
+          startTime: 23.0
+          endTime: 25.0
+          pose:
+            translation: [1.286, 0.1, 0.0]
+            rotation: [0.0, 0.0, 0.0]
+          constraint:
+            type: Surface
+            fricCoeff: 0.4
+        - limb: RightFoot
+          type: Add
+          startTime: 27.0
+          endTime: 29.0
+          pose:
+            translation: [1.286, -0.1, 0.0]
+            rotation: [0.0, 0.0, 0.0]
+          constraint:
+            type: Surface
+            fricCoeff: 0.4
+        - limb: LeftHand
+          type: Remove
+          startTime: 31.0
+          endTime: 34.0
+          swingConfig:
+            withdrawDurationRatio: 0.3
+            withdrawOffset: [0.0, 0.0, 0.15]
+      collisionConfigList:
+        - time: 32.0
+          type: Add
+          r1: hrp5_p
+          r2: table_with_tilt_blocks
+          collisions:
+            - body1: Lhand_Link0_Plan2
+              body2: Table
+              iDist: 0.15
+              sDist: 0.10
+        - time: 36.0
+          type: Remove
+          r1: hrp5_p
+          r2: table_with_tilt_blocks
+
+LimbTaskList:
+  - type: firstOrderImpedance
+    limb: LeftFoot
+    frame: LeftFootCenter
+    cutoffPeriod: 0.01
+    weight: 1000.0
+  - type: firstOrderImpedance
+    limb: RightFoot
+    frame: RightFootCenter
+    cutoffPeriod: 0.01
+    weight: 1000.0
+  - type: firstOrderImpedance
+    limb: LeftHand
+    frame: LeftHandCloseContact
+    cutoffPeriod: 0.01
+  - type: firstOrderImpedance
+    limb: RightHand
+    frame: RightHandCloseContact
+    cutoffPeriod: 0.01
+
+CentroidalManager:
+  refComZPolicy: Constant
+  limbWeightListForRefData:
+    LeftFoot: 1.0
+    RightFoot: 1.0
+    LeftHand: 0.2
+    RightHand: 0.2
+  mpcWeightParam:
+    runningPos: [10.0, 10.0, 1000.0]
+    terminalPos: [10.0, 10.0, 1000.0]
+
+robots:
+  # Environment models
+  table_with_tilt_blocks:
+    module: CnoidEnv/TableWithTiltBlocksFixed

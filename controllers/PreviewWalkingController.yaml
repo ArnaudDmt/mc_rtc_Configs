@@ -1,0 +1,104 @@
+---
+# Implement some additional text states
+states:
+  PwcMain:
+    base: Parallel
+    states: [PwcCommand, PwcTeleop]
+# Transitions map
+transitions:
+  - [PwcInitial, OK, PwcMain, Auto]
+# Initial state
+init: PwcInitial
+
+MotionPlayer:
+  default:
+    footstep_duration: 1.0 # [sec]
+    double_support_ratio: 0.2 # []
+  # Robot-specific parameters can be described below
+  rhps1:
+    mid_to_foot_transs_left:
+      translation: [0, 0.08, 0] # [m]
+    mid_to_foot_transs_right:
+      translation: [0, -0.08, 0] # [m]
+
+FootstepManager:
+  # Robot-specific parameters can be described below
+  rhps1:
+    horizon: 2.0 # [sec]
+    swingHeight: 0.05 # [m]
+    swingInitialLiftHeight: 0.015 # [m]
+    swingInitialLiftDuration: 0.15 # [sec]
+    overwriteFootstance: true
+    touchDownRemainingDuration: 0.15 # [sec]
+    touchDownPosError: 0.02 # [m]
+    touchDownFz: 100 # [N]
+    supportFootZmpOffset: [-0.01495, -0.02, 0] # [m] (positive for x-forward, y-outside)
+
+StabilizerTask:
+  # Robot-specific parameters can be described below
+  rhps1:
+    safety_tresholds:
+      MAX_AVERAGE_DCM_ERROR: 0.05
+    admittance:
+      com: [0.0, 0.0]
+      cop: [0.008, 0.008]
+      dfz: 0.0001
+      dfz_damping: 0.0
+      maxVel:
+        angular: [3., 3., 3.]
+        linear: [1., 1., 1.]
+    com:
+      active_joints: [Root, L_CROTCH_Y, L_CROTCH_R, L_CROTCH_P, L_KNEE_P, L_ANKLE_R, L_ANKLE_P, R_CROTCH_Y, R_CROTCH_R, R_CROTCH_P, R_KNEE_P, R_ANKLE_R, R_ANKLE_P]
+      height: 0.837656
+      max_height: 1.2
+      min_height: 0.6
+    dcm_tracking:
+      gains:
+        prop: 4.0
+        integral: 10.0
+        deriv: 0.5
+        zmpd: 0.1
+      derivator_time_constant: 5.0
+      integrator_time_constant: 15.0
+    tasks:
+      contact:
+        #stiffness: 400.
+        damping: 100.
+        #weight: 100000
+      forceSensorCutoffRatio: 0.7
+
+DCMStabilizerTask:
+  default:
+    type: dcm_stabilizer
+    contacts: [Left, Right]
+    forceSensorCutoffRatio: 0.7
+  # Robot-specific parameters can be described below
+  rhps1:
+    safety_tresholds:
+      MAX_AVERAGE_DCM_ERROR: 0.05
+    admittance:
+      com: [0.0, 0.0]
+      cop: [0.008, 0.008]
+      dfz: 0.0001
+      #dfz_damping: 0.0
+      maxVel:
+        angular: [3., 3., 3.]
+        linear: [1., 1., 1.]
+    com:
+      active_joints: [Root, L_CROTCH_Y, L_CROTCH_R, L_CROTCH_P, L_KNEE_P, L_ANKLE_R, L_ANKLE_P, R_CROTCH_Y, R_CROTCH_R, R_CROTCH_P, R_KNEE_P, R_ANKLE_R, R_ANKLE_P]
+      height: 0.837656
+      max_height: 1.2
+      min_height: 0.6
+    dcm_tracking:
+      gains:
+        poles: [15, 3, 1]
+        flexibility: 20.0
+        zmpd: 0.1
+      derivator_time_constant: 5.0
+      integrator_time_constant: 15.0
+    tasks:
+      contact:
+        #stiffness: 400.
+        damping: 100.
+        #weight: 100000
+      forceSensorCutoffRatio: 0.7
