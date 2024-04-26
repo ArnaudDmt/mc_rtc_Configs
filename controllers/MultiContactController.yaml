@@ -73,12 +73,12 @@ ObserverPipelines:
         surfacesForContactDetection: [RightFootCenter, LeftFootCenter, LeftHandCloseContact, RightHandCloseContact] # [LeftHandForceSensor]  # Not needed for HRP5P
         #contactSensorsDisabledInit: # [RightFootForceSensor, LeftFootForceSensor]
         
-    #- type: NaiveOdometry
-    #  update: false
-    #  config:
-    #    odometryType: Flat
-    #    contactsDetection: Sensors
-    #    #surfacesForContactDetection: [RightFootCenter, LeftFootCenter] # [LeftHandForceSensor]
+    - type: NaiveOdometry
+      update: false
+      config:
+        odometryType: 6D
+        contactsDetection: Surfaces
+        surfacesForContactDetection: [RightFootCenter, LeftFootCenter, LeftHandCloseContact, RightHandCloseContact] # [LeftHandForceSensor]
 
 
 transitions:

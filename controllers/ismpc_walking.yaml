@@ -49,15 +49,6 @@ ObserverPipelines:
         #anchorFrameFunction: dejhifurh
         surfacesForContactDetection: [RightFootCenter, LeftFootCenter] # [LeftHandForceSensor]
 
-    - type: Attitude
-      update: true
-      
-    - type: KinematicInertial
-      update: true
-      config:
-        anchorFrame:
-          maxAnchorFrameDiscontinuity: 0.05 # [m]
-
     - type: MCKineticsObserver
       update: false
       config:
@@ -67,10 +58,19 @@ ObserverPipelines:
         contactsDetection: Surfaces
         surfacesForContactDetection: [RightFootCenter, LeftFootCenter] # [LeftHandForceSensor]  # Not needed for HRP5P
         #contactSensorsDisabledInit: # [RightFootForceSensor, LeftFootForceSensor]
+
+    - type: Attitude
+      update: false
+      
+    - type: KinematicInertial
+      update: false
+      config:
+        anchorFrame:
+          maxAnchorFrameDiscontinuity: 0.05 # [m]
         
-    #- type: NaiveOdometry
-    #  update: false
-    #  config:
-    #    odometryType: Flat
-    #    contactsDetection: Sensors
-    #    #surfacesForContactDetection: [RightFootCenter, LeftFootCenter] # [LeftHandForceSensor]
+    - type: NaiveOdometry
+      update: false
+      config:
+        odometryType: Flat
+        contactsDetection: Sensors
+        #surfacesForContactDetection: [RightFootCenter, LeftFootCenter] # [LeftHandForceSensor]
