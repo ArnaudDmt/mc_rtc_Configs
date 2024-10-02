@@ -1,4 +1,4 @@
 withGyroNoise: true
-gyroStandardDev: [0.0, 0.0, 0.0]
+gyroStandardDev: [0.002, 0.0002, 0.01]
 gyroOffset: [0.0, 0.0, 0.0]
 #withAcceleroNoise: false
