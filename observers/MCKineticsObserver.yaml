@@ -11,6 +11,8 @@ contacts:
   #surfacesOfContactsAsInput: [RightHandSupportPlate, LeftHandSupportPlate] # [LeftHandForceSensor]
   #contactSensorsDisabledInit: [] # [LeftHandForceSensor] # [RightFootForceSensor, LeftFootForceSensor]
   #contactSensorsIgnored: [LeftHandForceSensor] # [LeftHandForceSensor]
+  contactsDetection: Surfaces
+  surfacesForContactDetection: [RightFootCenter, LeftFootCenter] # [LeftHandCloseContact] 
 
 backupInterval: 1
 

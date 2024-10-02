@@ -1,7 +1,7 @@
 contacts:
-        contactsDetection: Surfaces
-        #contactDetectionPropThreshold: 0.6
-        #anchorFrameFunction: dejhifurh
+  contactsDetection: Surfaces
+  surfacesForContactDetection: [RightFootCenter, LeftFootCenter, LeftHandCloseContact] # [LeftHandCloseContact] 
+
 leggedOdometry:
         kappa: 10
         lambdaInf: 0.001
