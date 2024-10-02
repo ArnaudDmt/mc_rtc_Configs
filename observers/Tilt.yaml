@@ -8,8 +8,9 @@ filterGains:
 contacts:
   contactsDetection: Surfaces
   surfacesForContactDetection: [RightFootCenter, LeftFootCenter, LeftHandCloseContact] # [LeftHandCloseContact] 
-  
+
 leggedOdometry:
   kappa: 10
   lambdaInf: 0.001
   correctContacts: true
+  odometryType: None
