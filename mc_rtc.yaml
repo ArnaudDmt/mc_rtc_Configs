@@ -1,36 +1,44 @@
+#Plugins: [HartleyIEKF] 
+
+#Plugins: [MocapAligner, HartleyIEKF] 
+
+
+
 #MainRobot: HRP4CR
 #Timestep: 0.002
 #Enabled: LIPMWalking
 #Enabled: LIPMStabilizer
 #Enabled: ForceSensorCalibration
-#Plugins: [NoisySensors]
+#Plugins: [MocapAligner]
 
 #MainRobot: HRP4
 #Timestep: 0.005
-#Enabled: LIPMWalking
+#Enabled: LIPMStabilizer
 #Enabled: LIPMStabilizer
 #Enabled: ForceSensorCalibration
 #Enabled: MultiContactController
-#Plugins: [NoisySensors]
+#Plugins: [MocapAligner]
 
-MainRobot: HRP2DRC
+#MainRobot: HRP2DRC
 #Timestep: 0.005
-Timestep: 0.004
-Enabled: ismpc_walking
+#Timestep: 0.005
+#Enabled: ismpc_walking
 #Enabled: LIPMWalking
 #Enabled: LIPMStabilizer
 #Enabled: ForceSensorCalibration
 #Enabled: CoM
-#Plugins: [NoisySensors, HartleyIEKF]
+#Plugins: [MocapAligner]
+
+#Plugins: [NoisySensors]
 
 #MainRobot: HRP5P
 #Timestep: 0.01
-#Enabled: MultiContactController
+Enabled: MultiContactController
 
 #Enabled: LIPMWalking
 #Enabled: LIPMStabilizer
 #Enabled: ForceSensorCalibration
-#Plugins: [NoisySensors]
+#Plugins: [MocapAligner]
 
 #MainRobot: JVRC1
 #Timestep: 0.002
@@ -38,23 +46,29 @@ Enabled: ismpc_walking
 # Enabled: LIPMStabilizer
 # Enabled: ForceSensorCalibration
 #Enabled: MultiContactController
-#Plugins: [NoisySensors]
+#Plugins: [MocapAligner, HartleyIEKF]
 
 #VerboseLoader: true
 #VerboseStateFactory: true
 
-#Plugins: []
+#Plugins: [MocapAligner, HartleyIEKF]
 #Timestep: 0.01
 #Timestep: 0.002
-#MainRobot: HRP5P
-##MainRobot: RHPS1_sake2_sake2
-#Enabled: BaselineWalkingController
+MainRobot: HRP5P
+#MainRobot: RHPS1_sake2_sake2
+#MainRobot: HRP2DRC
+Timestep: 0.002
 
+#Enabled: BaselineWalkingController
+# Plugins: [MocapAligner]
+#Plugins: [MocapAligner]
+#Plugins: [MocapAligner]
+#Timestep: 0.005
 #Timestep: 0.002
+#MainRobot: RHPS1_sake2_sake2
+#Enabled: ANAAvatarController_ismpc
+#Enabled: LIPMWalking
 #MainRobot: HRP5P
-#Enabled: BaselineWalkingController
-
-
 #Enabled: TiltVisualFsmController
 #MainRobot: JVRC1
 
@@ -99,7 +113,7 @@ Enabled: ismpc_walking
 #        contactsDetection: Sensors
 #        #surfacesForContactDetection: [RightFootCenter, LeftFootCenter] # [LeftHandForceSensor]
 
-#Plugins: [Replay]
+#Plugins: [MocapAligner, HartleyIEKF]
 #Replay:
 #  log: /home/arnaud/devel/src/mc_walker_policy/mc-control-WalkerPolicy-2023-09-20-13-45-16.bin
 #  with-inputs: true
@@ -117,5 +131,5 @@ Enabled: ismpc_walking
 #RobotModulePaths: ["@PROJECT_SOURCE_DIR@/description"]
 #RobotModulePaths: [/home/arnaud/devel/src/catkin_ws_CnoidEnv/src/CnoidEnv/description]
 #Timestep: 0.002
-#Plugins: [NoisySensors]
+#Plugins: [MocapAligner, HartleyIEKF]
 

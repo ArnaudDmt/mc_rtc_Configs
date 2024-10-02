@@ -1,48 +1,63 @@
 withDebugLogs: true
 withFiniteDifferences: false
-finiteDifferenceStep: 1e-6
+#finiteDifferenceStep: 1e-6
 withGyroBias: true
 withUnmodeledWrench: true
-contactDetectionPropThreshold: 0.110
-
 withAccelerationEstimation: true
+withDampingInMatrixA: true
 
-contactsSensorDisabledInit: [] # [LeftHandForceSensor]
+contacts:
+  contactDetectionPropThreshold: 0.110
+  #surfacesOfContactsAsInput: [RightHandSupportPlate, LeftHandSupportPlate] # [LeftHandForceSensor]
+  #contactSensorsDisabledInit: [] # [LeftHandForceSensor] # [RightFootForceSensor, LeftFootForceSensor]
+  #contactSensorsIgnored: [LeftHandForceSensor] # [LeftHandForceSensor]
 
-statePositionInitVariance: [0.0,0.0,0.0]
-stateOriInitVariance: [0.0,0.0,0.0]
-stateLinVelInitVariance: [0.0,0.0,0.0]
-stateAngVelInitVariance: [0.0,0.0,0.0]
-gyroBiasInitVariance: [0,0,0]
-unmodeledForceInitVariance: [0,0,0]
-unmodeledTorqueInitVariance: [0.0,0.0,0.0]
+backupInterval: 1
 
-contactPositionInitVarianceFirstContacts: [0.0, 0.0, 0.0] # [0.25e-4, 1.0e-4, 0.0] # [0.0,0.0,0.0]
-contactOriInitVarianceFirstContacts: [0.0,0.0,0.0] # 0.007615442 5 degrees # 0.00121847 2 degrees
-contactForceInitVarianceFirstContacts: [400,400,400]
-contactTorqueInitVarianceFirstContacts: [36e1,36e1,36e1]
+# gains for the Tilt Observer in backup
+filterGains:
+  finalAlpha: 5 # 5 # 0.0
+  finalBeta: 1 # 1 # 0.0 # 0.00001
+  finalGamma: 2 # 2 # 0.0
 
-contactPositionInitVarianceNewContacts: [1e-8,1e-8,1e-8] # [0.25e-4, 1.0e-4, 0.0] # [0.25e-4, 1.0e-4, 0.0] # [0.0,0.0,0.0]
-contactOriInitVarianceNewContacts: [1e-6,1e-6,1e-6] # 0.00121847 # 0.007615442 5 degrees # 0.00121847 2 degrees
-contactForceInitVarianceNewContacts: [400,400,400]
-contactTorqueInitVarianceNewContacts: [36e1,36e1,36e1]
 
-statePositionProcessVariance: [1e-10,1e-10,1e-10]
-stateOriProcessVariance: [0.00121847e-10,0.00121847e-10,0.00121847e-10] # [0.00121847e-10,0.00121847e-10,0.00121847e-10]
-stateLinVelProcessVariance: [0.0,0.0,0.0]
-stateAngVelProcessVariance: [1e-6,1e-6,1e-6]
-gyroBiasProcessVariance: [1e-12,1e-12,1e-12]
-unmodeledForceProcessVariance: [25e-4, 25e-4, 25e-4]
-unmodeledTorqueProcessVariance: [25e-6, 25e-6, 25e-6]
-contactPositionProcessVariance: [0.0,0.0,0.0] # [0.25e-4, 1.0e-4, 1e-8]
-contactOrientationProcessVariance: [0.0,0.0,0.0] # [1e-8,1e-8,1e-8] # 0.00121847 # square of 2 degrees # 0.000304618 # square of 1 degree
-contactForceProcessVariance: [50,50,4.9e2]
-contactTorqueProcessVariance: [3e1,3e1,3e1]
+ekfVariances:
+  statePositionInitVariance: [0.0,0.0,0.0]
+  stateOriInitVariance: [0.0,0.0,0.0]
+  stateLinVelInitVariance: [0.0,0.0,0.0]
+  stateAngVelInitVariance: [0.0,0.0,0.0]
+  gyroBiasInitVariance: [0,0,0]
+  unmodeledForceInitVariance: [0,0,0]
+  unmodeledTorqueInitVariance: [0.0,0.0,0.0]
 
-gyroSensorVariance: [1e-6,1e-6,1e-6]
-acceleroSensorVariance: [1e-4,1e-4,1e-4]
-forceSensorVariance: [4e1,4e1,4e1] # [9e90,9e90,9e90] # [9e1,9e1,9e1]
-torqueSensorVariance: [3e0,3e0,3e0] # [9e90,9e90,9e90] # [3e1,3e1,3e1]
+  contactPositionInitVarianceFirstContacts: [0.0, 0.0, 0.0] # [0.25e-4, 1.0e-4, 0.0] # [0.0,0.0,0.0]
+  contactOriInitVarianceFirstContacts: [0.0,0.0,0.0] # 0.007615442 5 degrees # 0.00121847 2 degrees
+  contactForceInitVarianceFirstContacts: [400,400,400]
+  contactTorqueInitVarianceFirstContacts: [360.0,360.0,360.0]
 
-positionSensorVariance: [0.0,0.0,0.0]
-orientationSensorVariance: [0.0,0.0,0.0]
+  contactPositionInitVarianceNewContacts: [1e-9,1e-9,1e-9] # [0.25e-4, 1.0e-4, 0.0] # [0.25e-4, 1.0e-4, 0.0] # [0.0,0.0,0.0]
+  contactOriInitVarianceNewContacts: [3e-4, 3e-4,3e-4] # 0.00121847 # 0.007615442 5 degrees # 0.00121847 2 degrees # 3e-4 = 1 degree
+  contactForceInitVarianceNewContacts: [400,400,400]
+  contactTorqueInitVarianceNewContacts: [360.0,360.0,360.0]
+
+  statePositionProcessVariance: [1e-14, 1e-14, 1e-14]
+  stateOriProcessVariance: [1e-18, 1e-18, 1e-18]
+  stateLinVelProcessVariance: [1e-18, 1e-18, 1e-18]
+  stateAngVelProcessVariance: [1e-18, 1e-18, 1e-18]
+  gyroBiasProcessVariance: [1e-12,1e-12,1e-12]
+  unmodeledForceProcessVariance: [25e-2, 25e-2, 25e-2]
+  unmodeledTorqueProcessVariance: [4e-2, 4e-2, 4e-2]
+  contactPositionProcessVariance: [0.0,0.0,0.0] # [0.25e-4, 1.0e-4, 1e-8]
+  contactOrientationProcessVariance: [0.0,0.0,0.0] # [1e-8,1e-8,1e-8] # 0.00121847 # square of 2 degrees # 0.000304618 # square of 1 degree
+  contactPositionProcessVariance: [1e-9,1e-9,1e-9] # [0.25e-4, 1.0e-4, 1e-8]
+  contactOrientationProcessVariance: [0,0,1e-9]  # [0.0,0.0,0.0] # [1e-8,1e-8,1e-8] # 0.00121847 # square of 2 degrees # 0.000304618 # square of 1 degree
+  contactForceProcessVariance: [160,160,160]
+  contactTorqueProcessVariance: [100,100,100]
+
+  gyroSensorVariance: [1e-6,1e-6,1e-6]
+  acceleroSensorVariance: [1e-4,1e-4,1e-4]
+  forceSensorVariance: [16,16,16] # [9e90,9e90,9e90] # [9e1,9e1,9e1]
+  torqueSensorVariance: [1,1,1] # [9e90,9e90,9e90] # [3e1,3e1,3e1]
+
+  positionSensorVariance: [0.0,0.0,0.0]
+  orientationSensorVariance: [0.0,0.0,0.0]

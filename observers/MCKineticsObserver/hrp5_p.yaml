@@ -1,5 +1,6 @@
-contactsDetection: Surfaces # Solver # Sensors # Surfaces
-surfacesForContactDetection: [RightFootCenter, LeftFootCenter, LeftHandCloseContact, RightHandCloseContact] # [LeftHandForceSensor]
+contacts:
+  contactsDetection: Surfaces
+  surfacesForContactDetection: [RightFootCenter, LeftFootCenter, LeftHandCloseContact] # [LeftHandCloseContact] 
 
 # Flexibilities of contacts
 linStiffness: [3e5, 3e5, 3e5] # [0, 0, 0] # [4e4, 4e4, 4e4]

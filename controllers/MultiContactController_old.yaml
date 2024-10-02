@@ -1,3 +1,5 @@
+# cnoid_env/project/HRP5P/CnoidEnv_TableWithTiltBlocks.cnoid
+
 ObserverPipelines:
   name: MainObserverPipeline
   gui: true
@@ -5,21 +7,21 @@ ObserverPipelines:
     - type: Encoder
     
     - type: BodySensor
-      update: false
+      update: true
       config:
         bodySensor: FloatingBase
         
     - type: Tilt
-      update: true
+      update: false
       config:
-        odometryType: None 
+        odometryType: 6D 
         finalAlpha: 5 # 5 # 0.0
         finalBeta: 1 # 1 # 0.0 # 0.00001
         finalGamma: 2 # 2 # 0.0
         contactsDetection: Surfaces
         #contactDetectionPropThreshold: 0.6
         #anchorFrameFunction: dejhifurh
-        surfacesForContactDetection: [RightFootCenter, LeftFootCenter] # [LeftHandForceSensor]
+        surfacesForContactDetection: [RightFootCenter, LeftFootCenter, LeftHandCloseContact, RightHandCloseContact] # [LeftHandForceSensor]
         
     # - type: TiltVisual
     #   update: false
@@ -36,10 +38,12 @@ ObserverPipelines:
     #     #anchorFrameFunction: dejhifurh
     #     surfacesForContactDetection: [RightFootCenter, LeftFootCenter] # [LeftHandForceSensor]
 
+
+        
     - type: MCVanytEstimator
       update: false
       config:
-        odometryType: Flat 
+        odometryType: 6D 
         tau: 0.15915 # 0.15915 # 0.15915 # 3.18 # 0.15915
         finalAlpha: 5 # 5 # 0.0
         finalBeta: 1 # 1 # 0.0 # 0.00001
@@ -47,30 +51,33 @@ ObserverPipelines:
         contactsDetection: Surfaces
         #contactDetectionPropThreshold: 0.6
         #anchorFrameFunction: dejhifurh
-        surfacesForContactDetection: [RightFootCenter, LeftFootCenter] # [LeftHandForceSensor]
+        surfacesForContactDetection: [RightFootCenter, LeftFootCenter, LeftHandCloseContact, RightHandCloseContact] # [LeftHandForceSensor]
+
+    - type: Attitude
+      update: true
+      
+    - type: KinematicInertial
+      update: true
+      config:
+        anchorFrame:
+          maxAnchorFrameDiscontinuity: 0.05 # [m]
 
     - type: MCKineticsObserver
       update: false
       config:
+        updateExtWrench: true
         backupInterval: 1
-        odometryType: Flat  # None # Odometry6d # flatOdometry
+        odometryType: 6D  # None # Odometry6d # flatOdometry
         #surfacesOfContactsAsInput: [RightHandSupportPlate, LeftHandSupportPlate] # [LeftHandForceSensor]
         contactsDetection: Surfaces
-        surfacesForContactDetection: [RightFootCenter, LeftFootCenter] # [LeftHandForceSensor]  # Not needed for HRP5P
+        surfacesForContactDetection: [RightFootCenter, LeftFootCenter, LeftHandCloseContact, RightHandCloseContact] # [LeftHandForceSensor]  # Not needed for HRP5P
         #contactSensorsDisabledInit: # [RightFootForceSensor, LeftFootForceSensor]
-
-    - type: Attitude
-      update: false
-      
-    - type: KinematicInertial
-      update: false
-      config:
-        anchorFrame:
-          maxAnchorFrameDiscontinuity: 0.05 # [m]
         
     - type: NaiveOdometry
       update: false
       config:
-        odometryType: Flat
-        contactsDetection: Sensors
-        #surfacesForContactDetection: [RightFootCenter, LeftFootCenter] # [LeftHandForceSensor]
+        odometryType: 6D
+        contactsDetection: Surfaces
+        surfacesForContactDetection: [RightFootCenter, LeftFootCenter, LeftHandCloseContact, RightHandCloseContact] # [LeftHandForceSensor]
+
+
