@@ -29,10 +29,10 @@ leggedOdometry:
 
 ekfVariances:
   statePositionInitVariance: [0.0,0.0,0.0]
-  stateOriInitVariance: [0.00121847, 0.00121847, 0.0]
+  stateOriInitVariance: [1e-3, 1e-3, 0.0]
   stateLinVelInitVariance: [0.0,0.0,0.0]
   stateAngVelInitVariance: [0.0,0.0,0.0]
-  gyroBiasInitVariance: [1e-10,1e-10,1e-10]
+  gyroBiasInitVariance: [1e-4,1e-4,1e-4]
   unmodeledForceInitVariance: [0,0,0]
   unmodeledTorqueInitVariance: [0.0,0.0,0.0]
 
@@ -50,11 +50,11 @@ ekfVariances:
   stateOriProcessVariance: [1e-18, 1e-18, 1e-18]
   stateLinVelProcessVariance: [1e-10, 1e-10, 1e-10]
   stateAngVelProcessVariance: [1e-12, 1e-12, 1e-12]
-  gyroBiasProcessVariance: [1e-18,1e-18,1e-18]
+  gyroBiasProcessVariance: [1e-18,1e-18,1e-18] # [1e-12,1e-12,1e-12]
   unmodeledForceProcessVariance: [9e-2, 9e-2, 9e-2]
   unmodeledTorqueProcessVariance: [9e-2, 9e-2, 9e-2]
   contactPositionProcessVariance: [1e-10,1e-10,1e-10] # [0.25e-4, 1.0e-4, 1e-8] # 1e-12: equivalent to 0.2mm in one second for dt = 0.005
-  contactOrientationProcessVariance: [0,0,1e-18]  # [0.0,0.0,0.0] # [1e-8,1e-8,1e-8] # 0.00121847 # square of 2 degrees # 0.000304618 # square of 1 degree
+  contactOrientationProcessVariance: [0,0,1e-8]  # [0.0,0.0,0.0] # [1e-8,1e-8,1e-8] # 0.00121847 # square of 2 degrees # 0.000304618 # square of 1 degree
   contactForceProcessVariance: [100,100,100]
   contactTorqueProcessVariance: [25,25,25]
 
