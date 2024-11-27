@@ -27,7 +27,7 @@ leggedOdometry:
   correctContacts: true
   odometryType: None 	
 
-ekfVariances:
+ekfStateProcessVariances:
   statePositionInitVariance: [0.0,0.0,0.0]
   stateOriInitVariance: [1e-4, 1e-4, 0.0]
   stateLinVelInitVariance: [0.0,0.0,0.0]
@@ -57,11 +57,3 @@ ekfVariances:
   contactOrientationProcessVariance: [0,0,1e-8]  # [0.0,0.0,0.0] # [1e-8,1e-8,1e-8] # 0.00121847 # square of 2 degrees # 0.000304618 # square of 1 degree
   contactForceProcessVariance: [100,100,100]
   contactTorqueProcessVariance: [25,25,25]
-
-  gyroSensorVariance: [1e-6,1e-6,1e-6]
-  acceleroSensorVariance: [2.5e-3,2.5e-3,2.5e-3]
-  forceSensorVariance: [1.6e1, 1.6e1, 1.6e1] # [9e90,9e90,9e90] # [9e1,9e1,9e1]
-  torqueSensorVariance: [2.5e-1, 2.5e-1, 2.5e-1] # [9e90,9e90,9e90] # [3e1,3e1,3e1]
-
-  positionSensorVariance: [0.0,0.0,0.0]
-  orientationSensorVariance: [0.0,0.0,0.0]

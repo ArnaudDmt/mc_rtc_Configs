@@ -3,6 +3,14 @@ contacts:
   surfacesForContactDetection: [RightFootCenter, LeftFootCenter] # [LeftHandCloseContact] 
   #contactSensorsIgnored: [LeftHandForceSensor] # [LeftHandForceSensor]
 
+ekfSensorNoiseVariances:
+  gyroSensorVariance: [2.5e-5,2.5e-5,2.5e-5]
+  acceleroSensorVariance: [4e-2,4e-2,4e-2]
+  forceSensorVariance: [4e0, 4e0, 4e0] # [9e90,9e90,9e90] # [9e1,9e1,9e1]
+  torqueSensorVariance: [4e-2, 4e-2, 4e-2] # [9e90,9e90,9e90] # [3e1,3e1,3e1]
+  positionSensorVariance: [0.0,0.0,0.0]
+  orientationSensorVariance: [0.0,0.0,0.0]
+  
 # Flexibilities of contacts
 linStiffness: [3e4, 3e4, 3e4] # [0, 0, 0] # [4e4, 4e4, 4e4]
 angStiffness: [727, 727, 727] # [0, 0, 0] # [727, 727, 727]
