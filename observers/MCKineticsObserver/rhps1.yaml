@@ -4,10 +4,10 @@ contacts:
   #contactSensorsIgnored: [LeftHandForceSensor] # [LeftHandForceSensor]
 
 ekfSensorNoiseVariances:
-  gyroSensorVariance: [2.5e-5,2.5e-5,2.5e-5]
-  acceleroSensorVariance: [4e-2,4e-2,4e-2]
-  forceSensorVariance: [4e0, 4e0, 4e0] # [9e90,9e90,9e90] # [9e1,9e1,9e1]
-  torqueSensorVariance: [4e-2, 4e-2, 4e-2] # [9e90,9e90,9e90] # [3e1,3e1,3e1]
+  gyroSensorVariance: [1.6e-5,1.6e-5,1.6e-5]
+  acceleroSensorVariance: [3.6e-3,3.6e-3,3.6e-3]
+  forceSensorVariance: [1e0, 1e0, 1e0] # [9e90,9e90,9e90] # [9e1,9e1,9e1]
+  torqueSensorVariance: [1e-2, 1e-2, 1e-2] # [9e90,9e90,9e90] # [3e1,3e1,3e1]
   positionSensorVariance: [0.0,0.0,0.0]
   orientationSensorVariance: [0.0,0.0,0.0]
   
