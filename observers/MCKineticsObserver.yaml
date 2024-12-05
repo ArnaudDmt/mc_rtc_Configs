@@ -32,7 +32,7 @@ ekfStateProcessVariances:
   stateOriInitVariance: [1e-4, 1e-4, 0.0]
   stateLinVelInitVariance: [0.0,0.0,0.0]
   stateAngVelInitVariance: [0.0,0.0,0.0]
-  gyroBiasInitVariance: [1e-4,1e-4,1e-4]
+  gyroBiasInitVariance: [1e-8,1e-8,1e-8]
   unmodeledForceInitVariance: [0,0,0]
   unmodeledTorqueInitVariance: [0.0,0.0,0.0]
 
@@ -42,7 +42,7 @@ ekfStateProcessVariances:
   contactTorqueInitVarianceFirstContacts: [100.0,100.0,100.0]
 
   contactPositionInitVarianceNewContacts: [1e-6,1e-6,1e-6] # [0.25e-4, 1.0e-4, 0.0] # [0.25e-4, 1.0e-4, 0.0] # [0.0,0.0,0.0]
-  contactOriInitVarianceNewContacts: [1e-6, 1e-6,1e-6] # 0.00121847 # 0.007615442 5 degrees # 0.00121847 2 degrees # 3e-4 = 1 degree
+  contactOriInitVarianceNewContacts: [1e-6, 1e-6, 1e-6] # 0.00121847 # 0.007615442 5 degrees # 0.00121847 2 degrees # 3e-4 = 1 degree
   contactForceInitVarianceNewContacts: [400,400,400]
   contactTorqueInitVarianceNewContacts: [100.0,100.0,100.0]
 
