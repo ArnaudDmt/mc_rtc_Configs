@@ -1,0 +1,66 @@
+widgets:
+  Markers:
+    Footsteps:
+      Plan:
+        TargetContact:
+          visible: true
+        FootstepPlan Left:
+          visible: true
+        FootstepPlan Right:
+          visible: true
+    Sole:
+      Target Ankle Pos_point3d: {}
+      Support Ankle Pos_point3d: {}
+  ObserverPipelines:
+    LIPMWalkingObserverPipeline:
+      KinematicInertial:
+        Markers:
+          Velocity_arrow: {}
+      BodySensor:
+        Velocity_arrow: {}
+  Footsteps Planner:
+    Visuals:
+      Trajectory:
+        visible: true
+      Intersec_point3d: {}
+      Dist_arrow: {}
+  Collisions:
+    hrp5_p/hrp5_p:
+      Arrows:
+        Larm_Link2::Chest_Link2_arrow: {}
+        Rarm_Link2::Chest_Link2_arrow: {}
+    hrp4/hrp4:
+      Arrows:
+        body::L_ELBOW_P_LINK_arrow: {}
+        body::R_ELBOW_P_LINK_arrow: {}
+        torso::L_SHOULDER_Y_LINK_arrow: {}
+        torso::R_SHOULDER_Y_LINK_arrow: {}
+  Tasks:
+    lipm_stabilizer_hrp5_p:
+      Markers:
+        CoM-DCM:
+          Pendulum_CoM_arrow: {}
+          Measured_CoM_point3d: {}
+          Pendulum_DCM_point3d: {}
+          Measured_DCM_point3d: {}
+        Net wrench:
+          Measured_ZMP_point3d: {}
+          Measured_ZMPForce_arrow: {}
+        Foot wrenches:
+          Stabilizer_RightFootCenterCoP_point3d: {}
+          Measured_RightFootCenterCoPForce_arrow: {}
+          Stabilizer_LeftFootCenterCoP_point3d: {}
+          Measured_LeftFootCenterCoPForce_arrow: {}
+        Contacts:
+          SupportContacts:
+            visible: true
+  Contacts:
+    Forces:
+      hrp5_p::LeftFoot/ground::AllGround_arrow: {}
+      hrp5_p::RightFoot/ground::AllGround_arrow: {}
+      hrp5_p::RightFootCenter/ground::AllGround_arrow: {}
+      hrp5_p::LeftFootCenter/ground::AllGround_arrow: {}
+      hrp4::RightFootCenter/ground::AllGround_arrow: {}
+      hrp4::LeftFootCenter/ground::AllGround_arrow: {}
+      hrp2_drc::RightFootCenter/ground::AllGround_arrow: {}
+      hrp2_drc::LeftFootCenter/ground::AllGround_arrow: {}
