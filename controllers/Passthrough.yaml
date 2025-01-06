@@ -8,52 +8,94 @@ ObserverPipelines:
       update: false
       config:
         bodySensor: FloatingBase
-      
-
-    # - type: MocapVisualizer
-    #   update: false
-    #   config:
-    #     firstRun: false
-    #     projectName: HRP5_MultiContact_1
-    #     mocapBodyName: Body
-    #     contactsDetection: Surfaces
-    #     surfacesForContactDetection: [RightFootCenter, LeftFootCenter, LeftHandCloseContact] # [LeftHandForceSensor]
-
         
-    # - type: Attitude
-    #   update: false
+    - type: Attitude
+      update: true
+
       
     - type: KinematicInertial
-      update: false
+      update: true
       config:
         anchorFrame:
           maxAnchorFrameDiscontinuity: 0.05 # [m]
 
+    - type: MCVanytEstimator
+      update: true      
+      config: 
+        leggedOdometry:
+          odometryType: 6D
 
 
     - type: MCKineticsObserver
-      update: true
-      config: 
-        leggedOdometry:
-          odometryType: Flat 	
-
-    - type: Tilt
       update: false
       config: 
+        ignoreWrenchSensors: false
+        withContactStateCovRemoval: false
+        withDebugLogs: true
         leggedOdometry:
-          odometryType: Flat 	
+          odometryType: 6D
 
 
-    - type: MCVanytEstimator
-      update: false      
+    # - type: MCKineticsObserver
+    #   name: KOAPC
+    #   update: false
+    #   config: 
+    #     withDebugLogs: false
+    #     withContactStateCovRemoval: false
+    #     leggedOdometry:
+    #       odometryType: 6D 	
+
+    # - type: MCKineticsObserver
+    #   name: KOASC
+    #   update: false
+    #   config: 
+    #     zero_process_cov: true
+    #     withDebugLogs: false
+    #     withAdaptativeContactProcessCov: false
+    #     leggedOdometry:
+    #       odometryType: 6D 	
+
+    - type: MCKineticsObserver
+      name: KOZPC
+      update: false
       config: 
+        zero_process_cov: true
+        withDebugLogs: false
+        withContactStateCovRemoval: false
+        withAdaptativeContactProcessCov: false
         leggedOdometry:
-          odometryType: Flat
+          odometryType: 6D 	
+    
+    - type: MCKineticsObserver
+      name: KOWithoutWrenchSensors
+      update: false
+      config: 
+        ignoreWrenchSensors: true
+        withDebugLogs: true
+        withContactStateCovRemoval: false
+        withAdaptativeContactProcessCov: true
+        leggedOdometry:
+          odometryType: 6D 	
 
-        
+    # - type: Tilt
+    #   update: false
+    #   config: 
+    #     leggedOdometry:
+    #       odometryType: 6D 	
+
+
     #- type: NaiveOdometry
     #  update: false
     #  config:
     #    odometryType: Flat
     #    contactsDetection: Sensors
     #    #surfacesForContactDetection: [RightFootCenter, LeftFootCenter] # [LeftHandForceSensor]
+
+    - type: MocapVisualizer
+      update: false
+      config:
+        firstRun: true
+        projectName: HRP5_MultiContact_4
+        mocapBodyName: Body
+        contactsDetection: Surfaces
+        surfacesForContactDetection: [RightFootCenter, LeftFootCenter, LeftHandCloseContact] # [RightFootCenter, LeftFootCenter, LeftHandCloseContact]

@@ -1,15 +1,15 @@
-#Plugins: [HartleyIEKF] 
+Plugins: [MocapAligner, HartleyIEKF] 
 
 #Plugins: [MocapAligner, HartleyIEKF] 
 
-
+#Plugins: [MocapAligner, HartleyIEKF] 
 
 #MainRobot: HRP4CR
 #Timestep: 0.002
 #Enabled: LIPMWalking
 #Enabled: LIPMStabilizer
 #Enabled: ForceSensorCalibration
-#Plugins: [MocapAligner]
+#Plugins: [HartleyIEKF]
 
 #MainRobot: HRP4
 #Timestep: 0.005
@@ -33,7 +33,7 @@
 
 #MainRobot: HRP5P
 #Timestep: 0.01
-Enabled: MultiContactController
+#Enabled: MultiContactController
 
 #Enabled: LIPMWalking
 #Enabled: LIPMStabilizer
@@ -57,7 +57,7 @@ Enabled: MultiContactController
 MainRobot: HRP5P
 #MainRobot: RHPS1_sake2_sake2
 #MainRobot: HRP2DRC
-Timestep: 0.002
+Timestep: 0.005
 
 #Enabled: BaselineWalkingController
 # Plugins: [MocapAligner]
