@@ -35,20 +35,20 @@ ObserverPipelines:
       update: true
       config: 
         leggedOdometry:
-          odometryType: Flat 	
+          odometryType: 6D 	
 
     - type: Tilt
       update: false
       config: 
         leggedOdometry:
-          odometryType: Flat 	
+          odometryType: 6D 	
 
 
-    - type: MCVanytEstimator
-      update: false      
-      config: 
-        leggedOdometry:
-          odometryType: Flat
+    # - type: MCVanytEstimator
+    #   update: false      
+    #   config: 
+    #     leggedOdometry:
+    #       odometryType: 6D
 
         
     #- type: NaiveOdometry

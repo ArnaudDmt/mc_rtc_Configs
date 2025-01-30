@@ -202,3 +202,34 @@ plans:
         - pose:
             translation: [0.035, 0.08, 0.0]
           surface: LeftFootCenter
+
+
+
+
+ObserverPipelines:
+  name: LIPMWalkingObserverPipeline
+  gui: true
+  observers:
+    - type: Encoder
+    
+    - type: BodySensor
+      update: false
+      config:
+        bodySensor: FloatingBase
+
+    - type: Attitude
+      update: true
+      
+    - type: KinematicInertial
+      update: true
+      config:
+        anchorFrame:
+          maxAnchorFrameDiscontinuity: 0.05 # [m]
+
+
+
+    - type: MCKineticsObserver
+      update: false
+      config: 
+        leggedOdometry:
+          odometryType: None

@@ -1,0 +1,25 @@
+ObserverPipelines:
+  name: MainObserverPipeline
+  gui: true
+  observers:
+    - type: Encoder
+    
+    - type: BodySensor
+      update: false
+      config:
+        bodySensor: FloatingBase
+        
+
+    - type: MCKineticsObserver
+      update: false
+      config:
+        odometryType: None
+
+    - type: Attitude
+      update: true
+      
+    - type: KinematicInertial
+      update: true
+      config:
+        anchorFrame:
+          maxAnchorFrameDiscontinuity: 0.05 # [m]
