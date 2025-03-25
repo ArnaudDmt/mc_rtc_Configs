@@ -1,6 +1,7 @@
 contacts:
   contactsDetection: Surfaces
   surfacesForContactDetection: [RightFootCenter, LeftFootCenter, LeftHandCloseContact] # [LeftHandCloseContact] 
+  #contactSensorsIgnored: [LeftHandForceSensor]
 ekfSensorNoiseVariances:
   gyroSensorVariance: [2.5e-7,2.5e-7,2.5e-7]
   acceleroSensorVariance: [2.5e-3,2.5e-3,2.5e-3]
