@@ -23,11 +23,11 @@ ObserverPipelines:
     # - type: Attitude
     #   update: false
       
-    - type: KinematicInertial
-      update: false
-      config:
-        anchorFrame:
-          maxAnchorFrameDiscontinuity: 0.05 # [m]
+    # - type: KinematicInertial
+    #   update: false
+    #   config:
+    #     anchorFrame:
+    #       maxAnchorFrameDiscontinuity: 0.05 # [m]
 
 
 
@@ -43,6 +43,17 @@ ObserverPipelines:
         leggedOdometry:
           odometryType: 6D 	
 
+    - type: MCWaiko
+      update: false
+      config: 
+        leggedOdometry:
+          odometryType: 6D 	
+
+    - type: MCViking
+      update: false
+      config: 
+        leggedOdometry:
+          odometryType: 6D 	
 
     # - type: MCVanytEstimator
     #   update: false      
