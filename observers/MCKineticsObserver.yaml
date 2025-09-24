@@ -6,13 +6,6 @@ withUnmodeledWrench: true
 withAccelerationEstimation: true
 withDampingInMatrixA: true
 
-contacts:
-  # schmittTriggerLowerPropThreshold: 0.100
-  # schmittTriggerUpperPropThreshold: 0.150
-  #surfacesOfContactsAsInput: [RightHandSupportPlate, LeftHandSupportPlate] # [LeftHandForceSensor]
-  #contactSensorsDisabledInit: [] # [LeftHandForceSensor] # [RightFootForceSensor, LeftFootForceSensor]
-  contactsDetection: Surfaces
-  surfacesForContactDetection: [RightFootCenter, LeftFootCenter, LeftHandCloseContact] # [LeftHandCloseContact] 
 
 backupInterval: 1
 

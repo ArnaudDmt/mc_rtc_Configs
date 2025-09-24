@@ -4,10 +4,10 @@ ObserverPipelines:
   observers:
     - type: Encoder
     
-    - type: BodySensor
-      update: false
-      config:
-        bodySensor: FloatingBase
+    # - type: BodySensor
+    #   update: false
+    #   config:
+    #     bodySensor: FloatingBase
       
 
     # - type: MocapVisualizer
@@ -31,40 +31,78 @@ ObserverPipelines:
 
 
 
-    - type: MCKineticsObserver
-      update: true
-      config: 
-        leggedOdometry:
-          odometryType: 6D 	
+    # - type: MCKineticsObserver
+    #   update: false
+    #   config: 
+    #     withAdaptativeContactProcessCov: true
+    #     leggedOdometry:
+    #       odometryType: 6D 	
 
     - type: Tilt
+      update: false 
+ 
+
+    - type: MCKineticsObserver
       update: false
       config: 
+        ignoreWrenchSensors: false
+        withDebugLogs: false
         leggedOdometry:
-          odometryType: 6D 	
+          odometryType: 6D
 
-    - type: MCWaiko
-      update: false
-      config: 
-        leggedOdometry:
-          odometryType: 6D 	
-
-    - type: MCViking
-      update: false
-      config: 
-        leggedOdometry:
-          odometryType: 6D 	
-
-    # - type: MCVanytEstimator
-    #   update: false      
+    # - type: MCKineticsObserverFG
+    #   update: false
     #   config: 
+    #     ignoreWrenchSensors: false
+    #     withContactStateCovRemoval: false
+    #     withDebugLogs: true
     #     leggedOdometry:
     #       odometryType: 6D
 
-        
-    #- type: NaiveOdometry
-    #  update: false
-    #  config:
-    #    odometryType: Flat
-    #    contactsDetection: Sensors
-    #    #surfacesForContactDetection: [RightFootCenter, LeftFootCenter] # [LeftHandForceSensor]
+ 
+
+    # - type: MCKineticsObserver
+    #   name: KOASC
+    #   update: false
+    #   config: 
+    #     zero_process_cov: true
+    #     withDebugLogs: false
+    #     withAdaptativeContactProcessCov: false
+    #     leggedOdometry:
+    #       odometryType: 6D 	
+
+    - type: MCKineticsObserver
+      name: KOZPC
+      update: false
+      config: 
+        zero_process_cov: true
+        withDebugLogs: false
+        withContactStateCovRemoval: false
+        withAdaptativeContactProcessCov: false
+        leggedOdometry:
+          odometryType: 6D 	
+    
+    - type: MCKineticsObserver
+      name: KOWithoutWrenchSensors
+      update: false
+      config: 
+        ignoreWrenchSensors: true
+        withDebugLogs: false
+        withContactStateCovRemoval: false
+        withAdaptativeContactProcessCov: true
+        leggedOdometry:
+          odometryType: 6D 	
+
+    
+
+    - type: MCVanytEstimator
+      update: false        
+ 
+ 
+
+    - type: MCWaiko
+      update: true
+      config: 
+        withGyroBias: false
+ 
+ 

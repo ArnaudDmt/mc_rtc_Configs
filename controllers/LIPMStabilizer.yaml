@@ -23,3 +23,6 @@ ObserverPipelines:
       config:
         anchorFrame:
           maxAnchorFrameDiscontinuity: 0.05 # [m]
+
+    - type: Tilt
+      update: true

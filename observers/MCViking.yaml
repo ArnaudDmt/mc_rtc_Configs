@@ -5,7 +5,7 @@ contacts:
 leggedOdometry:
         kappa: 10
         lambdaInf: 0.001
-        correctContacts: true
+        correctContacts: false
         odometryType: None 	
         
 filterGains:

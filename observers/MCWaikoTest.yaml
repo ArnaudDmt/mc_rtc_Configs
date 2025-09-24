@@ -1,7 +1,7 @@
 leggedOdometry:
         kappa: 10
         lambdaInf: 0.001
-        correctContacts: false
+        correctContacts: true
         odometryType: 6D 
         
  
@@ -10,9 +10,9 @@ filterGains:
   initRho: 2
   initBeta: 4 # 1 # 0.0 # 0.00001
   initGamma: 1 # 2 # 0.0
-  initMu: 1 
+  initMu: 2 
   finalAlpha: 4 # 5 # 0.0
-  finalRho: 1
+  finalRho: 2
   finalBeta: 4 # 1 # 0.0 # 0.00001
   finalGamma: 1 # 2 # 0.0
-  finalMu: 1
+  finalMu: 2
