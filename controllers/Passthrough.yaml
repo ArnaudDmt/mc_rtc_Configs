@@ -35,6 +35,7 @@ ObserverPipelines:
     #   update: false
     #   config: 
     #     withAdaptativeContactProcessCov: true
+    #     withDebugLogs: false
     #     leggedOdometry:
     #       odometryType: 6D 	
 
@@ -42,13 +43,13 @@ ObserverPipelines:
       update: false 
  
 
-    - type: MCKineticsObserver
-      update: false
-      config: 
-        ignoreWrenchSensors: false
-        withDebugLogs: false
-        leggedOdometry:
-          odometryType: 6D
+    # - type: MCKineticsObserver
+    #   update: false
+    #   config: 
+    #     ignoreWrenchSensors: false
+    #     withDebugLogs: true
+    #     leggedOdometry:
+    #       odometryType: 6D
 
     # - type: MCKineticsObserverFG
     #   update: false
@@ -71,38 +72,38 @@ ObserverPipelines:
     #     leggedOdometry:
     #       odometryType: 6D 	
 
-    - type: MCKineticsObserver
-      name: KOZPC
-      update: false
-      config: 
-        zero_process_cov: true
-        withDebugLogs: false
-        withContactStateCovRemoval: false
-        withAdaptativeContactProcessCov: false
-        leggedOdometry:
-          odometryType: 6D 	
+    # - type: MCKineticsObserver
+    #   name: KOZPC
+    #   update: false
+    #   config: 
+    #     zero_process_cov: true
+    #     withDebugLogs: false
+    #     withContactStateCovRemoval: false
+    #     withAdaptativeContactProcessCov: false
+    #     leggedOdometry:
+    #       odometryType: 6D 	
     
-    - type: MCKineticsObserver
-      name: KOWithoutWrenchSensors
-      update: false
-      config: 
-        ignoreWrenchSensors: true
-        withDebugLogs: false
-        withContactStateCovRemoval: false
-        withAdaptativeContactProcessCov: true
-        leggedOdometry:
-          odometryType: 6D 	
+    # - type: MCKineticsObserver
+    #   name: KOWithoutWrenchSensors
+    #   update: false
+    #   config: 
+    #     ignoreWrenchSensors: true
+    #     withDebugLogs: false
+    #     withContactStateCovRemoval: false
+    #     withAdaptativeContactProcessCov: true
+    #     leggedOdometry:
+    #       odometryType: 6D 	
 
     
 
-    - type: MCVanytEstimator
-      update: false        
+    # - type: MCVanytEstimator
+    #   update: true        
  
  
 
-    - type: MCWaiko
-      update: true
-      config: 
-        withGyroBias: false
+    # - type: MCWaiko
+    #   update: true
+    #   config: 
+    #     withGyroBias: false
  
  

@@ -1,4 +1,6 @@
-Plugins: [MocapAligner, HartleyIEKF] 
+# Plugins: [MocapAligner, HartleyIEKF] 
+
+# Plugins: [MocapAligner, HartleyIEKF] 
 
 # Plugins: [MocapAligner, HartleyIEKF] 
 
@@ -58,7 +60,9 @@ Plugins: [MocapAligner, HartleyIEKF]
 #MainRobot: HRP5P
 # MainRobot: RHPS1
 #MainRobot: HRP2DRC
-Timestep: 0.002
+Timestep: 0.005
+
+MainRobot: RHPS1_sake2_sake2
 
 #Enabled: BaselineWalkingController
 # Plugins: [MocapAligner]
@@ -66,7 +70,7 @@ Timestep: 0.002
 #Plugins: [MocapAligner]
 #Timestep: 0.005
 #Timestep: 0.002
-MainRobot: HRP5P
+# MainRobot: HRP5P
 #Enabled: ANAAvatarController_ismpc
 #Enabled: LIPMWalking
 # MainRobot: HRP5P
