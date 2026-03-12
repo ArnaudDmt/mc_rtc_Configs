@@ -1,8 +1,8 @@
-leggedOdometry:
+# leggedOdometry:
 #         kappa: 10
 #         lambdaInf: 0.001
 #         correctContacts: false
-        odometryType: 6D 
+#         odometryType: 6D 
         
  
 # filterGains:

@@ -18,6 +18,10 @@ widgets:
           Velocity_arrow: {}
       BodySensor:
         Velocity_arrow: {}
+    MainObserverPipeline:
+      KinematicInertial:
+        Markers:
+          Velocity_arrow: {}
   Footsteps Planner:
     Visuals:
       Trajectory:
@@ -54,6 +58,20 @@ widgets:
         Contacts:
           SupportContacts:
             visible: true
+    CoMTask:
+      com_target_point3d: {}
+      com_point3d: {}
+    BaseOriTask:
+      ori_target_rotation: {}
+      ori_rotation: {}
+    FootTask_Left:
+      targetPose_transform: {}
+      compliancePose_transform: {}
+      pose_transform: {}
+    FootTask_Right:
+      targetPose_transform: {}
+      compliancePose_transform: {}
+      pose_transform: {}
   Contacts:
     Forces:
       hrp5_p::LeftFoot/ground::AllGround_arrow: {}
@@ -198,3 +216,38 @@ widgets:
       RightHandSupportPlate_normal_arrow: {}
       RightHandWrench:
         visible: true
+  BWC:
+    FootManager:
+      FootstepMarker:
+        Footstep:
+          visible: true
+    CentroidalManager:
+      ForceMarker:
+        Right_Force0_arrow: {}
+        Right_FricPyramid0:
+          visible: true
+        Right_Force1_arrow: {}
+        Right_FricPyramid1:
+          visible: true
+        Right_Force2_arrow: {}
+        Right_FricPyramid2:
+          visible: true
+        Right_Force3_arrow: {}
+        Right_FricPyramid3:
+          visible: true
+        Right_SurfaceRegion:
+          visible: true
+        Left_Force0_arrow: {}
+        Left_FricPyramid0:
+          visible: true
+        Left_Force1_arrow: {}
+        Left_FricPyramid1:
+          visible: true
+        Left_Force2_arrow: {}
+        Left_FricPyramid2:
+          visible: true
+        Left_Force3_arrow: {}
+        Left_FricPyramid3:
+          visible: true
+        Left_SurfaceRegion:
+          visible: true

@@ -3,17 +3,25 @@ ObserverPipelines:
   gui: true
   observers:
     - type: Encoder
-    
-    - type: BodySensor
-      update: false
-      config:
-        bodySensor: FloatingBase
-        
 
     - type: MCKineticsObserver
       update: true
-      config:
-        odometryType: None
+      config:  
+        withDebugLogs: true
+        leggedOdometry:
+          odometryType: 6D 	
+
+    - type: Tilt
+      update: false 
+    
+    - type: MCWaiko
+      update: false 
+      config: 
+        leggedOdometry:
+          odometryType: None 	
+ 
+    - type: MCValinor
+      update: false 
 
     - type: Attitude
       update: true
@@ -23,4 +31,3 @@ ObserverPipelines:
       config:
         anchorFrame:
           maxAnchorFrameDiscontinuity: 0.05 # [m]
-

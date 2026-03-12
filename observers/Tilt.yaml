@@ -5,8 +5,7 @@ filterGains:
   finalAlpha: 4 # 5 # 0.0
   finalBeta: 4 # 1 # 0.0 # 0.00001
   finalGamma: 1 # 2 # 0.0
-#contactDetectionPropThreshold: 0.6
-#anchorFrameFunction: dejhifurh
+  
  
 leggedOdometry:
   kappa: 10

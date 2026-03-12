@@ -20,24 +20,29 @@ ObserverPipelines:
     #     surfacesForContactDetection: [RightFootCenter, LeftFootCenter, LeftHandCloseContact] # [LeftHandForceSensor]
 
         
-    # - type: Attitude
-    #   update: false
+    - type: Attitude
+      update: false
       
-    # - type: KinematicInertial
-    #   update: false
-    #   config:
-    #     anchorFrame:
-    #       maxAnchorFrameDiscontinuity: 0.05 # [m]
+    - type: KinematicInertial
+      update: false
+      config:
+        anchorFrame:
+          maxAnchorFrameDiscontinuity: 0.05 # [m]
 
 
+    - type: MCKineticsObserver
+      update: false
+      config:  
+        withDebugLogs: true
+        leggedOdometry:
+          odometryType: 6D 	
 
     # - type: MCKineticsObserver
     #   update: false
-    #   config: 
-    #     withAdaptativeContactProcessCov: true
-    #     withDebugLogs: false
+    #   config:  
+    #     withDebugLogs: true
     #     leggedOdometry:
-    #       odometryType: 6D 	
+    #       odometryType: None 	
 
     - type: Tilt
       update: false 
@@ -101,9 +106,14 @@ ObserverPipelines:
  
  
 
-    # - type: MCWaiko
-    #   update: true
-    #   config: 
-    #     withGyroBias: false
+    - type: MCWaiko
+      update: false 
+      config: 
+        leggedOdometry:
+          odometryType: None 	
  
- 
+    - type: MCValinor
+      update: true 
+      config: 
+        leggedOdometry:
+          odometryType: 6D
