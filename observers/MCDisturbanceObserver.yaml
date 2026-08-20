@@ -1,0 +1,4 @@
+contacts:
+  contactsDetection: Surfaces
+  surfacesForContactDetection: [RightFootCenter, LeftFootCenter] # [LeftHandCloseContact] 
+cutoffFrequency: 50

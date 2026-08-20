@@ -1,0 +1,38 @@
+withDebugLogs: true   
+
+stateInitNoises:
+  posNoise: 0.0
+  oriNoise: 0.0174533 # 0.0174533
+  linVelNoise: 1e-4
+  angVelNoise: 1e-4
+  linAccNoise: 1e-4
+  angAccNoise: 1e-4
+  gyroBiasNoise: 1e-6
+  disturbForceNoise: 30
+  disturbMomentNoise: 10
+  restPosNoise: 1e-2
+  restOriNoise: 0.0349066 # 2 degrees
+  forceNoise: 1e-1
+  momentNoise: 1e-2
+  contactRestPosAverageNoise: 1e-3
+  contactRestYawAverageNoise: 1e-3
+
+stateProcessNoises:
+  posNoise: 1e-6
+  oriNoise: 1e-6
+  linVelNoise: 1e-5
+  angVelNoise: 1e-5
+  linAccNoise: 1e-4
+  angAccNoise: 1e-4
+  disturbForceNoise: 1e-1
+  disturbMomentNoise: 1e-1
+  gyroBiasNoise: 1e-8
+  restPosNoise: 1e-6
+  restOriNoise: 1e-6
+  forceNoise: 30
+  momentNoise: 10
+
+# jointTorques: 
+#   noise: 10
+#   residualInitNoise: 0.0 
+#   useCommandAsMeasurement: true

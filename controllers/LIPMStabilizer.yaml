@@ -1,6 +1,6 @@
 ObserverPipelines:
   name: MainObserverPipeline
-  gui: true
+  gui: false
   observers:
     - type: Encoder
     
@@ -9,14 +9,9 @@ ObserverPipelines:
       config:
         bodySensor: FloatingBase
         
-
-    - type: MCKineticsObserver
-      update: false
-      config:
-        odometryType: None
-
     - type: Attitude
       update: true
+
       
     - type: KinematicInertial
       update: true
@@ -24,5 +19,19 @@ ObserverPipelines:
         anchorFrame:
           maxAnchorFrameDiscontinuity: 0.05 # [m]
 
-    - type: Tilt
-      update: true
+    # - type: MCVanytEstimator
+    #   update: true      
+    #   config: 
+    #     leggedOdometry:
+    #       odometryType: 6D
+
+
+    - type: MCKineticsObserver
+      update: false 
+      config: 
+        withGui: true
+        ignoreWrenchSensors: false
+        withContactStateCovRemoval: false
+        withDebugLogs: true
+        leggedOdometry:
+          odometryType: None

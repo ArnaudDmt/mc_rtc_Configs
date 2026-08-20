@@ -5,7 +5,7 @@ ObserverPipelines:
     - type: Encoder
     
     - type: BodySensor
-      update: false
+      update: true
       config:
         bodySensor: FloatingBase
         
@@ -13,11 +13,11 @@ ObserverPipelines:
       update: true
 
       
-    - type: KinematicInertial
-      update: true
-      config:
-        anchorFrame:
-          maxAnchorFrameDiscontinuity: 0.05 # [m]
+    # - type: KinematicInertial
+    #   update: true
+    #   config:
+    #     anchorFrame:
+    #       maxAnchorFrameDiscontinuity: 0.05 # [m]
 
     # - type: MCVanytEstimator
     #   update: true      
@@ -25,11 +25,11 @@ ObserverPipelines:
     #     leggedOdometry:
     #       odometryType: 6D
 
-    # - type: Tilt
-    #   update: false
-    #   config: 
-    #     leggedOdometry:
-    #       odometryType: None 	
+    - type: Tilt
+      update: false
+      config: 
+        leggedOdometry:
+          odometryType: None 	
 
     # - type: MCKineticsObserver
     #   update: false 
@@ -43,16 +43,60 @@ ObserverPipelines:
     #       schmittTriggerUpperPropThreshold: 0.12
 
     - type: MCKineticsObserver
-      update: true 
-      name: Test
+      update: false  
       config: 
         withGui: true 
         withDebugLogs: true
         leggedOdometry:
-          odometryType: None
+          odometryType: 6D
         contacts: 
           schmittTriggerLowerPropThreshold: 0.1
           schmittTriggerUpperPropThreshold: 0.12
+
+    - type: ExternalForcesObserver 
+      estimation_method: MomentumObserver # or ForceSensorBased
+      is_active: true                  # false = estimate and log only, no feedback to QP
+      use_forces_from_ft_sensors: true # include FT sensor wrenches in the estimate
+      # MomentumObserver-only keys:
+      residual_gain: 10.0              # observer gain K; higher = faster response, more noise
+      torque_source_type: CommandedTorque  # JointTorqueMeasurement preferred when available
+
+    # - type: MCKineticsObserverFG
+    #   name: Test
+    #   update: false  
+    #   config: 
+    #     withGui: false 
+    #     withDebugLogs: true
+    #     jointTorques:
+    #       enabled: true
+    #       useCommandAsMeasurement: true
+    #       noise: 3.0
+    #       modelNoise: 3.0 
+    #       jointAccelerationInitNoise: 10
+    #       jointAccelerationProcessNoise: 1
+    #       jointAccelerationFiniteDifferenceNoise: 2
+    #     leggedOdometry:
+    #       withRestPoseAverageFactor: false
+    #       odometryType: 6D
+    #     contacts: 
+    #       schmittTriggerLowerPropThreshold: 0.1
+    #       schmittTriggerUpperPropThreshold: 0.12
+
+    # - type: MCKineticsObserverFG
+    #   update: false  
+    #   config: 
+    #     withGui: false 
+    #     withDebugLogs: true
+    #     jointTorques:
+    #       enabled: false
+    #       useCommandAsMeasurement: true
+    #       noise: 1e-1
+    #     leggedOdometry:
+    #       withRestPoseAverageFactor: false
+    #       odometryType: 6D
+    #     contacts: 
+    #       schmittTriggerLowerPropThreshold: 0.1
+    #       schmittTriggerUpperPropThreshold: 0.12
     # - type: MCKineticsObserverFG
     #   update: false
     #   config: 
@@ -116,8 +160,16 @@ ObserverPipelines:
     #     leggedOdometry:
     #       odometryType: 6D 	
 
-    - type: Tilt
-      update: false 
+    # - type: MCValinor
+    #   update: true 
+    #   config: 
+    #     withDebugLogs: true
+    #     # withOriMeasFromContactPos: true
+    #     leggedOdometry:
+    #       odometryType: None
+          
+    # - type: Tilt
+    #   update: false 
 
 
     #- type: NaiveOdometry

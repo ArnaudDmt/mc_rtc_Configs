@@ -1,3 +1,21 @@
+withDebugLogs: true
+withFiniteDifferences: false
+#finiteDifferenceStep: 1e-6
+withGyroBias: false
+withUnmodeledWrench: true
+withAccelerationEstimation: true
+withDampingInMatrixA: true
+
+contacts:
+  # schmittTriggerLowerPropThreshold: 0.100
+  # schmittTriggerUpperPropThreshold: 0.150
+  #surfacesOfContactsAsInput: [RightHandSupportPlate, LeftHandSupportPlate] # [LeftHandForceSensor]
+  #contactSensorsDisabledInit: [] # [LeftHandForceSensor] # [RightFootForceSensor, LeftFootForceSensor]
+  contactsDetection: Surfaces
+  surfacesForContactDetection: [RightFootCenter, LeftFootCenter] # [LeftHandCloseContact] 
+
+backupInterval: 1
+
 # gains for the Tilt Observer in backup
 filterGains:
   finalAlpha: 5 # 5 # 0.0

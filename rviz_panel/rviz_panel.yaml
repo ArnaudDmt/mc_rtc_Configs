@@ -22,6 +22,11 @@ widgets:
       KinematicInertial:
         Markers:
           Velocity_arrow: {}
+      BodySensor:
+        Velocity_arrow: {}
+      SLAM:
+        X_S_Ground_transform: {}
+        X_0_Slam_transform: {}
   Footsteps Planner:
     Visuals:
       Trajectory:
@@ -58,19 +63,14 @@ widgets:
         Contacts:
           SupportContacts:
             visible: true
-    CoMTask:
+    com_hrp5_p:
       com_target_point3d: {}
       com_point3d: {}
-    BaseOriTask:
-      ori_target_rotation: {}
-      ori_rotation: {}
-    FootTask_Left:
+    swingFootTask_left:
       targetPose_transform: {}
-      compliancePose_transform: {}
       pose_transform: {}
-    FootTask_Right:
+    swingFootTask_right:
       targetPose_transform: {}
-      compliancePose_transform: {}
       pose_transform: {}
   Contacts:
     Forces:
@@ -83,171 +83,38 @@ widgets:
       hrp2_drc::RightFootCenter/ground::AllGround_arrow: {}
       hrp2_drc::LeftFootCenter/ground::AllGround_arrow: {}
   Robot:
-    Collision objects:
-      BODY:
-        visible: true
-      CHEST_P_LINK:
-        visible: true
-      CHEST_Y_LINK:
-        visible: true
-      HEAD_P_LINK:
-        visible: true
-      HEAD_Y_LINK:
-        visible: true
-      LC-AI-base_LINK:
-        visible: true
-      LC-AI-hinge_LINK:
-        visible: true
-      LC-AO-base_LINK:
-        visible: true
-      LC-AO-hinge_LINK:
-        visible: true
-      LC-CI-base_LINK:
-        visible: true
-      LC-CI-hinge_LINK:
-        visible: true
-      LC-CO-base_LINK:
-        visible: true
-      LC-CO-hinge_LINK:
-        visible: true
-      L_ANKLE_P_LINK:
-        visible: true
-      L_ANKLE_R_LINK:
-        visible: true
-      L_CROTCH_P_LINK:
-        visible: true
-      L_CROTCH_R_LINK:
-        visible: true
-      L_CROTCH_Y_LINK:
-        visible: true
-      L_ELBOW_P_LINK:
-        visible: true
-      L_ELBOW_Y_LINK:
-        visible: true
-      L_HAND_LINK:
-        visible: true
-      L_KNEE_P_LINK:
-        visible: true
-      L_SHOULDER_P_LINK:
-        visible: true
-      L_SHOULDER_R_LINK:
-        visible: true
-      L_SHOULDER_Y_LINK:
-        visible: true
-      L_WRIST_R_LINK:
-        visible: true
-      L_WRIST_Y_LINK:
-        visible: true
-      RC-AI-base_LINK:
-        visible: true
-      RC-AI-hinge_LINK:
-        visible: true
-      RC-AO-base_LINK:
-        visible: true
-      RC-AO-hinge_LINK:
-        visible: true
-      RC-CI-base_LINK:
-        visible: true
-      RC-CI-hinge_LINK:
-        visible: true
-      RC-CO-base_LINK:
-        visible: true
-      RC-CO-hinge_LINK:
-        visible: true
-      R_ANKLE_P_LINK:
-        visible: true
-      R_ANKLE_R_LINK:
-        visible: true
-      R_CROTCH_P_LINK:
-        visible: true
-      R_CROTCH_R_LINK:
-        visible: true
-      R_CROTCH_Y_LINK:
-        visible: true
-      R_ELBOW_P_LINK:
-        visible: true
-      R_ELBOW_Y_LINK:
-        visible: true
-      R_HAND_LINK:
-        visible: true
-      R_KNEE_P_LINK:
-        visible: true
-      R_SHOULDER_P_LINK:
-        visible: true
-      R_SHOULDER_R_LINK:
-        visible: true
-      R_SHOULDER_Y_LINK:
-        visible: true
-      R_WRIST_R_LINK:
-        visible: true
-      R_WRIST_Y_LINK:
-        visible: true
-      l-one-finger-link:
-        visible: true
-      r-one-finger-link:
-        visible: true
-    Surface objects:
-      LeftFoot:
-        visible: true
-      LeftFoot_normal_arrow: {}
-      LeftFootCenter:
-        visible: true
-      LeftFootCenter_normal_arrow: {}
-      LeftHandSakeGripperPalm:
-        visible: true
-      LeftHandSakeGripperPalm_normal_arrow: {}
-      LeftHandSupportPlate:
-        visible: true
-      LeftHandSupportPlate_normal_arrow: {}
-      LeftHandWrench:
-        visible: true
-      LeftHandWrench_normal_arrow: {}
-      RightFoot:
-        visible: true
-      RightFoot_normal_arrow: {}
-      RightFootCenter:
-        visible: true
-      RightFootCenter_normal_arrow: {}
-      RightHandSakeGripperPalm:
-        visible: true
-      RightHandSakeGripperPalm_normal_arrow: {}
-      RightHandSupportPlate:
-        visible: true
-      RightHandSupportPlate_normal_arrow: {}
-      RightHandWrench:
-        visible: true
-  BWC:
-    FootManager:
-      FootstepMarker:
-        Footstep:
+    Frame objects:
+      equi_camera_transform: {}
+      azure_depth_frame_corrected_transform: {}
+  Walking:
+    Footsteps Parameters:
+      Reference pose_transform: {}
+    Visualization:
+      Feasibility:
+        Feasibility Region:
           visible: true
-    CentroidalManager:
-      ForceMarker:
-        Right_Force0_arrow: {}
-        Right_FricPyramid0:
+        Feasibility Region Switch:
           visible: true
-        Right_Force1_arrow: {}
-        Right_FricPyramid1:
+      Trajectories:
+        Target angular momentum_arrow: {}
+        Predicted ZMP Trajectory:
           visible: true
-        Right_Force2_arrow: {}
-        Right_FricPyramid2:
+        ZMP QP Trajectory:
           visible: true
-        Right_Force3_arrow: {}
-        Right_FricPyramid3:
+        Admittance ref Trajectory:
           visible: true
-        Right_SurfaceRegion:
+        DCM ref Trajectory:
           visible: true
-        Left_Force0_arrow: {}
-        Left_FricPyramid0:
+        Predicted CoM Trajectory:
           visible: true
-        Left_Force1_arrow: {}
-        Left_FricPyramid1:
+        Predicted DCM Trajectory:
           visible: true
-        Left_Force2_arrow: {}
-        Left_FricPyramid2:
+        DCM QP Trajectory:
           visible: true
-        Left_Force3_arrow: {}
-        Left_FricPyramid3:
+        SupportPolygon:
           visible: true
-        Left_SurfaceRegion:
+      FootStep:
+        Planned Footsteps:
+          visible: true
+        Corrected Footsteps:
           visible: true

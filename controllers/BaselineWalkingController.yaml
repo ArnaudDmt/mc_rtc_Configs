@@ -1,33 +1,93 @@
 ObserverPipelines:
   name: MainObserverPipeline
-  gui: true
+  gui: false
   observers:
     - type: Encoder
-
-    - type: MCKineticsObserver
-      update: true
-      config:  
-        withDebugLogs: true
-        leggedOdometry:
-          odometryType: 6D 	
-
-    - type: Tilt
-      update: false 
     
+    - type: BodySensor
+      update: false
+      config:
+        bodySensor: FloatingBase
+        
+    # - type: Tilt
+    #   update: false
+    #   config:
+    #     odometryType: Flat 
+    #     finalAlpha: 5 # 5 # 0.0
+    #     finalBeta: 1 # 1 # 0.0 # 0.00001
+    #     finalGamma: 2 # 2 # 0.0
+    #     contactsDetection: Surfaces
+    #     #contactDetectionPropThreshold: 0.6
+    #     #anchorFrameFunction: dejhifurh
+    #     surfacesForContactDetection: [RightFootCenter, LeftFootCenter] # [LeftHandForceSensor]
+        
+
     - type: MCWaiko
       update: false 
       config: 
+        withDebugLogs: true
+        # withOriMeasFromContactPos: true
         leggedOdometry:
-          odometryType: None 	
- 
-    - type: MCValinor
-      update: false 
+          odometryType: None
+    # - type: TiltVisual
+    #   update: false
+    #   config:
+    #     odometryType: Flat 
+    #     finalAlpha: 5 # 5 # 0.0
+    #     finalBeta: 1 # 1 # 0.0 # 0.00001
+    #     finalGamma: 2 # 2 # 0.0
+    #     rho1: 100
+    #     rho2: 0
+    #     mu: 5
+    #     contactsDetection: Surfaces
+    #     #contactDetectionPropThreshold: 0.6
+    #     #anchorFrameFunction: dejhifurh
+    #     surfacesForContactDetection: [RightFootCenter, LeftFootCenter] # [LeftHandForceSensor]
 
-    - type: Attitude
-      update: true
+
+        
+    # - type: MCVanytEstimator
+    #   update: false
+
+
+#    - type: MocapVisualizer
+#      update: false
+#      config:
+#        mocapBodyName: head_root
+#        contactsDetection: Surfaces
+#        surfacesForContactDetection: [RightFootCenter, LeftFootCenter] # [LeftHandForceSensor]
+
+    # - type: Tilt
+    #   update: false
+    #   config: 
+    #     leggedOdometry:
+    #       odometryType: None 	
+    # - type: MCKineticsObserver
+    #   update: true
+    #   config:
+    #     withGui: true 
+    #     backupInterval: 1
+    #     odometryType: None  # None # Odometry6d # Flat
+    #     #surfacesOfContactsAsInput: [RightHandSupportPlate, LeftHandSupportPlate] # [LeftHandForceSensor]
+    #     contactsDetection: Surfaces
+    #     surfacesForContactDetection: [RightFootCenter, LeftFootCenter] # [LeftHandForceSensor]  # Not needed for HRP5P
+    #     #contactSensorsDisabledInit: # [RightFootForceSensor, LeftFootForceSensor]
+    # - type: Attitude
+    #   update: true
       
-    - type: KinematicInertial
-      update: true
-      config:
-        anchorFrame:
-          maxAnchorFrameDiscontinuity: 0.05 # [m]
+    # - type: KinematicInertial
+    #   update: true
+    #   config:
+    #     anchorFrame:
+          # maxAnchorFrameDiscontinuity: 0.05 # [m]
+
+
+        
+
+
+    #- type: NaiveOdometry
+    #  update: false
+    #  config:
+    #    odometryType: Flat
+    #    contactsDetection: Sensors
+    #    #surfacesForContactDetection: [RightFootCenter, LeftFootCenter] # [LeftHandForceSensor]

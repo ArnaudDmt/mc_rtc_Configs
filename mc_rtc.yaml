@@ -2,18 +2,36 @@ Plugins: [MocapAligner, HartleyIEKF]
 
 # Plugins: [MocapAligner, HartleyIEKF] 
 
-# Plugins: [MocapAligner, HartleyIEKF] 
+
+
+
+
+
+
 
 # Plugins: [MocapAligner, HartleyIEKF] 
 
 
+# Plugins: [MocapAligner, HartleyIEKF] 
+
+# Plugins: [ CAPO ]
+
+
+
+
+
+# Plugins: [MocapAligner, HartleyIEKF] 
+
+# Plugins: [MocapAligner, HartleyIEKF] 
+
+# Plugins: [MocapAligner, HartleyIEKF] 
 
 #MainRobot: HRP4CR
 #Timestep: 0.002
 #Enabled: LIPMWalking
 #Enabled: LIPMStabilizer
 #Enabled: ForceSensorCalibration
-#Plugins: [MocapAligner]
+#Plugins: [HartleyIEKF]
 
 #MainRobot: HRP4
 #Timestep: 0.005
@@ -26,8 +44,8 @@ Plugins: [MocapAligner, HartleyIEKF]
 #MainRobot: HRP2DRC
 #Timestep: 0.005
 #Timestep: 0.005
-#Enabled: ismpc_walking
-#Enabled: LIPMWalking
+# Enabled: ismpc_walking
+# Enabled: LIPMWalking
 #Enabled: LIPMStabilizer
 #Enabled: ForceSensorCalibration
 #Enabled: CoM
@@ -35,17 +53,16 @@ Plugins: [MocapAligner, HartleyIEKF]
 
 #Plugins: [NoisySensors]
 
-# MainRobot: HRP5P
+#MainRobot: HRP5P
 #Timestep: 0.01
-# Enabled: Passthrough
+#Enabled: MultiContactController
 
-Enabled: BaselineWalkingController
 #Enabled: LIPMWalking
 #Enabled: LIPMStabilizer
 #Enabled: ForceSensorCalibration
 #Plugins: [MocapAligner]
 
-#MainRobot: JVRC1
+# MainRobot: JVRC1
 #Timestep: 0.002
 # Enabled: LIPMWalking
 # Enabled: LIPMStabilizer
@@ -59,22 +76,26 @@ Enabled: BaselineWalkingController
 #Plugins: [MocapAligner, HartleyIEKF]
 #Timestep: 0.01
 #Timestep: 0.002
-#MainRobot: HRP5P
-# MainRobot: RHPS1
-#MainRobot: HRP2DRC
-# Timestep: 0.002
+MainRobot: HRP5P
 
-MainRobot: RHPS1_sake2_sake2
+# MainRobot: H1
 
-#Enabled: BaselineWalkingController
+# MainRobot: RHPS1_sake2_sake2
+# MainRobot: HRP2DRC
+Timestep: 0.005
+# Enabled: LIPMStabilizer
+Enabled: BaselineWalkingController
+# Enabled: LogisticController_ismpc
+
+# Enabled: BaselineWalkingController
 # Plugins: [MocapAligner]
 #Plugins: [MocapAligner]
 #Plugins: [MocapAligner]
-Timestep: 0.005
+#Timestep: 0.005
 #Timestep: 0.002
-# MainRobot: HRP5P
-#Enabled: ANAAvatarController_ismpc
-#Enabled: LIPMWalking
+# MainRobot: RHPS1_sake2_sake2
+# Enabled: ANAAvatarController_ismpc
+# Enabled: LIPMWalking
 # MainRobot: HRP5P
 #Enabled: TiltVisualFsmController
 #MainRobot: JVRC1
